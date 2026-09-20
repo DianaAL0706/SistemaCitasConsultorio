@@ -17,6 +17,31 @@ El sistema permitirá registrar doctores y pacientes, crear citas y relacionarla
 - IntelliJ IDEA
 - Git
 - GitHub
+## Instalación y configuración
+
+1. Instalar JDK 11.
+2. Instalar y configurar IntelliJ IDEA.
+3. Instalar y configurar Git.
+4. Clonar o descargar el repositorio del proyecto.
+5. Abrir el proyecto en IntelliJ IDEA.
+6. Verificar que el JDK 11 esté configurado como SDK del proyecto.
+7. Ejecutar la clase Main.java.
+
+## Uso del programa
+
+El programa simula un sistema de administración de citas para un consultorio clínico.
+
+En este primer avance se implementaron las clases Doctor, Paciente, Cita y Administrador. El sistema permite validar el acceso de un administrador, registrar la información de doctores y pacientes, y relacionarlos mediante una cita que contiene identificador, fecha, hora y motivo.
+
+Para comprobar el funcionamiento del proyecto, se debe ejecutar la clase Main.java.
+
+## Créditos
+
+Proyecto académico desarrollado por Diana Torres Rionda.
+
+## Licencia
+
+Este proyecto fue desarrollado con fines académicos y educativos.
 
 ## Estado del proyecto
 En desarrollo - Avance 1.
