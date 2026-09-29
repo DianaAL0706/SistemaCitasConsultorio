@@ -20,7 +20,7 @@ public class Main {
             );
             doctores.add(doctor);
 
-            String continuar = "S";
+            String continuar;
             do{
 
             System.out.println("\nREGISTRO DE DOCTORES");
