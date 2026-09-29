@@ -1,29 +1,63 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
+        ArrayList<Doctor> doctores = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-        // Crear administrador
         Administrador administrador =
                 new Administrador("admin", "1234");
 
-        // Validar acceso
         if (administrador.validarAcceso("admin", "1234")) {
             System.out.println("Acceso correcto.");
 
-            // Crear doctor
             Doctor doctor = new Doctor(
                     "D001",
                     "Laura Martínez",
                     "Medicina General"
             );
+            doctores.add(doctor);
 
-            // Crear paciente
+            System.out.println("\nREGISTRO DE DOCTORES");
+
+            System.out.print("Ingrese el ID del doctor: ");
+            String idDoctor = scanner.nextLine();
+
+            System.out.print("Ingrese el nombre completo: ");
+            String nombreDoctor = scanner.nextLine();
+
+            System.out.print("Ingrese la especialidad: ");
+            String especialidadDoctor = scanner.nextLine();
+
+            boolean existeDoctor = false;
+
+            for (Doctor d : doctores) {
+                if (d.getId().equalsIgnoreCase(idDoctor)) {
+                    existeDoctor = true;
+                    break;
+                }
+            }
+            if (existeDoctor) {
+                System.out.println("Error: ya existe un doctor con ese ID.");
+            } else if (idDoctor.trim().isEmpty()
+                    || nombreDoctor.trim().isEmpty()
+                    || especialidadDoctor.trim().isEmpty()) {
+                System.out.println("Error: todos los campos son obligatorios.");
+            } else {
+                Doctor nuevoDoctor = new Doctor(
+                        idDoctor,
+                        nombreDoctor,
+                        especialidadDoctor
+                );
+                doctores.add(nuevoDoctor);
+                System.out.println("Doctor registrado correctamente.");
+            }
             Paciente paciente = new Paciente(
                     "P001",
                     "Carlos Hernández"
             );
-
-            // Crear cita y relacionarla con doctor y paciente
             Cita cita = new Cita(
                     "C001",
                     "20/09/2026",
@@ -32,8 +66,6 @@ public class Main {
                     doctor,
                     paciente
             );
-
-            // Mostrar información de la cita
             System.out.println("Cita registrada correctamente.");
             System.out.println("ID de cita: " + cita.getId());
             System.out.println("Fecha: " + cita.getFecha());
@@ -43,7 +75,6 @@ public class Main {
                     cita.getDoctor().getNombreCompleto());
             System.out.println("Paciente: " +
                     cita.getPaciente().getNombreCompleto());
-
         } else {
             System.out.println("Identificador o contraseña incorrectos.");
         }
