@@ -20,6 +20,9 @@ public class Main {
             );
             doctores.add(doctor);
 
+            String continuar = "S";
+            do{
+
             System.out.println("\nREGISTRO DE DOCTORES");
 
             System.out.print("Ingrese el ID del doctor: ");
@@ -54,7 +57,13 @@ public class Main {
                 doctores.add(nuevoDoctor);
                 System.out.println("Doctor registrado correctamente.");
             }
-            Paciente paciente = new Paciente(
+
+        System.out.print("\n¿Desea registrar otro doctor? (S/N): ");
+        continuar = scanner.nextLine();
+
+    } while (continuar.equalsIgnoreCase("S"));
+
+                Paciente paciente = new Paciente(
                     "P001",
                     "Carlos Hernández"
             );
