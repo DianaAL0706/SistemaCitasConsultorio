@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Doctor> doctores = new ArrayList<>();
         ArrayList<Paciente> pacientes = new ArrayList<>();
+        ArrayList<Cita> citas = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         Administrador administrador =
@@ -116,7 +117,86 @@ public class Main {
                     doctor,
                     paciente
             );
-            System.out.println("Cita registrada correctamente.");
+            citas.add(cita);
+
+            String continuarCita;
+
+            do {
+                System.out.println("\nREGISTRO DE CITAS");
+
+                System.out.print("Ingrese el ID de la cita: ");
+                String idCita = scanner.nextLine();
+
+                System.out.print("Ingrese la fecha: ");
+                String fechaCita = scanner.nextLine();
+
+                System.out.print("Ingrese la hora: ");
+                String horaCita = scanner.nextLine();
+
+                System.out.print("Ingrese el motivo: ");
+                String motivoCita = scanner.nextLine();
+
+                System.out.print("Ingrese el ID del doctor: ");
+                String idDoctorCita = scanner.nextLine();
+
+                System.out.print("Ingrese el ID del paciente: ");
+                String idPacienteCita = scanner.nextLine();
+
+                Doctor doctorCita = null;
+
+                for (Doctor d : doctores) {
+                    if (d.getId().equalsIgnoreCase(idDoctorCita)) {
+                        doctorCita = d;
+                        break;
+                    }
+                }
+                Paciente pacienteCita = null;
+
+                for (Paciente p : pacientes) {
+                    if (p.getId().equalsIgnoreCase(idPacienteCita)) {
+                        pacienteCita = p;
+                        break;
+                    }
+                }
+                boolean existeCita = false;
+
+                for (Cita c : citas) {
+                    if (c.getId().equalsIgnoreCase(idCita)) {
+                        existeCita = true;
+                        break;
+                    }
+                }
+                if (existeCita) {
+                    System.out.println("Error: ya existe una cita con ese ID.");
+                } else if (idCita.trim().isEmpty()
+                        || fechaCita.trim().isEmpty()
+                        || horaCita.trim().isEmpty()
+                        || motivoCita.trim().isEmpty()
+                        || idDoctorCita.trim().isEmpty()
+                        || idPacienteCita.trim().isEmpty()) {
+                    System.out.println("Error: todos los campos son obligatorios.");
+                } else if (doctorCita == null) {
+                    System.out.println("Error: no existe un doctor con ese ID.");
+                } else if (pacienteCita == null) {
+                    System.out.println("Error: no existe un paciente con ese ID.");
+                } else {
+                    Cita nuevaCita = new Cita(
+                            idCita,
+                            fechaCita,
+                            horaCita,
+                            motivoCita,
+                            doctorCita,
+                            pacienteCita
+                    );
+
+                    citas.add(nuevaCita);
+                    System.out.println("Cita registrada correctamente.");
+                }
+                System.out.print("\n¿Desea registrar otra cita? (S/N): ");
+                continuarCita = scanner.nextLine();
+
+            } while (continuarCita.equalsIgnoreCase("S"));
+
             System.out.println("ID de cita: " + cita.getId());
             System.out.println("Fecha: " + cita.getFecha());
             System.out.println("Hora: " + cita.getHora());
