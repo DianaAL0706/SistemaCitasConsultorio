@@ -5,6 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Doctor> doctores = new ArrayList<>();
+        ArrayList<Paciente> pacientes = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         Administrador administrador =
@@ -67,6 +68,46 @@ public class Main {
                     "P001",
                     "Carlos Hernández"
             );
+            pacientes.add(paciente);
+
+            String continuarPaciente;
+
+            do {
+                System.out.println("\nREGISTRO DE PACIENTES");
+
+                System.out.print("Ingrese el ID del paciente: ");
+                String idPaciente = scanner.nextLine();
+
+                System.out.print("Ingrese el nombre completo: ");
+                String nombrePaciente = scanner.nextLine();
+                boolean existePaciente = false;
+
+                for (Paciente p : pacientes) {
+                    if (p.getId().equalsIgnoreCase(idPaciente)) {
+                        existePaciente = true;
+                        break;
+                    }
+                }
+                if (existePaciente) {
+                    System.out.println("Error: ya existe un paciente con ese ID.");
+                } else if (idPaciente.trim().isEmpty()
+                        || nombrePaciente.trim().isEmpty()) {
+                    System.out.println("Error: todos los campos son obligatorios.");
+                } else {
+                    Paciente nuevoPaciente = new Paciente(
+                            idPaciente,
+                            nombrePaciente
+                    );
+
+                    pacientes.add(nuevoPaciente);
+                    System.out.println("Paciente registrado correctamente.");
+                }
+
+                System.out.print("\n¿Desea registrar otro paciente? (S/N): ");
+                continuarPaciente = scanner.nextLine();
+
+            } while (continuarPaciente.equalsIgnoreCase("S"));
+
             Cita cita = new Cita(
                     "C001",
                     "20/09/2026",
