@@ -4,6 +4,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
+        GestorArchivos.prepararArchivos();
+
         ArrayList<Doctor> doctores = new ArrayList<>();
         ArrayList<Paciente> pacientes = new ArrayList<>();
         ArrayList<Cita> citas = new ArrayList<>();
@@ -57,6 +60,7 @@ public class Main {
                         especialidadDoctor
                 );
                 doctores.add(nuevoDoctor);
+                GestorArchivos.guardarDoctor(nuevoDoctor);
                 System.out.println("Doctor registrado correctamente.");
             }
 
@@ -101,6 +105,7 @@ public class Main {
                     );
 
                     pacientes.add(nuevoPaciente);
+                    GestorArchivos.guardarPaciente(nuevoPaciente);
                     System.out.println("Paciente registrado correctamente.");
                 }
 
@@ -190,6 +195,7 @@ public class Main {
                     );
 
                     citas.add(nuevaCita);
+                    GestorArchivos.guardarCita(nuevaCita);
                     System.out.println("Cita registrada correctamente.");
                 }
                 System.out.print("\n¿Desea registrar otra cita? (S/N): ");
