@@ -10,6 +10,11 @@ public class Main {
         ArrayList<Doctor> doctores = new ArrayList<>();
         ArrayList<Paciente> pacientes = new ArrayList<>();
         ArrayList<Cita> citas = new ArrayList<>();
+
+        GestorArchivos.cargarDoctores(doctores);
+        GestorArchivos.cargarPacientes(pacientes);
+        GestorArchivos.cargarCitas(citas, doctores, pacientes);
+
         Scanner scanner = new Scanner(System.in);
 
         Administrador administrador =
@@ -23,7 +28,18 @@ public class Main {
                     "Laura Martínez",
                     "Medicina General"
             );
-            doctores.add(doctor);
+            boolean existeDoctorInicial = false;
+
+            for (Doctor d : doctores) {
+                if (d.getId().equalsIgnoreCase("D001")) {
+                    existeDoctorInicial = true;
+                    break;
+                }
+            }
+
+            if (!existeDoctorInicial) {
+                doctores.add(doctor);
+            }
 
             String continuar;
             do{
@@ -73,7 +89,18 @@ public class Main {
                     "P001",
                     "Carlos Hernández"
             );
-            pacientes.add(paciente);
+            boolean existePacienteInicial = false;
+
+            for (Paciente p : pacientes) {
+                if (p.getId().equalsIgnoreCase("P001")) {
+                    existePacienteInicial = true;
+                    break;
+                }
+            }
+
+            if (!existePacienteInicial) {
+                pacientes.add(paciente);
+            }
 
             String continuarPaciente;
 
@@ -122,7 +149,18 @@ public class Main {
                     doctor,
                     paciente
             );
-            citas.add(cita);
+            boolean existeCitaInicial = false;
+
+            for (Cita c : citas) {
+                if (c.getId().equalsIgnoreCase("C001")) {
+                    existeCitaInicial = true;
+                    break;
+                }
+            }
+
+            if (!existeCitaInicial) {
+                citas.add(cita);
+            }
 
             String continuarCita;
 
