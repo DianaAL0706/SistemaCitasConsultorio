@@ -25,15 +25,25 @@ El sistema permitirá registrar doctores y pacientes, crear citas y relacionarla
 4. Clonar o descargar el repositorio del proyecto.
 5. Abrir el proyecto en IntelliJ IDEA.
 6. Verificar que el JDK 11 esté configurado como SDK del proyecto.
-7. Ejecutar la clase Main.java.
+7. Ejecutar la aplicación desde la clase `Main.java` en IntelliJ IDEA o mediante el archivo JAR ejecutable.
+    Para generar el archivo JAR desde IntelliJ IDEA, se debe configurar un artefacto de tipo JAR utilizando la opción `From modules with dependencies`, seleccionar la clase `Main` como clase principal y posteriormente utilizar `Build > Build Artifacts`.
 
 ## Uso del programa
 
 El programa simula un sistema de administración de citas para un consultorio clínico.
 
-En este primer avance se implementaron las clases Doctor, Paciente, Cita y Administrador. El sistema permite validar el acceso de un administrador, registrar la información de doctores y pacientes, y relacionarlos mediante una cita que contiene identificador, fecha, hora y motivo.
+Al ejecutar la aplicación, el sistema valida el acceso del administrador y permite realizar las siguientes operaciones:
 
-Para comprobar el funcionamiento del proyecto, se debe ejecutar la clase Main.java.
+- Registrar doctores mediante un ID, nombre completo y especialidad.
+- Registrar pacientes mediante un ID y nombre completo.
+- Crear citas indicando ID, fecha, hora y motivo.
+- Asignar a cada cita un doctor y un paciente previamente registrados.
+- Validar que no existan identificadores duplicados.
+- Almacenar la información de doctores, pacientes y citas en archivos dentro de la carpeta `db`.
+- Recuperar la información almacenada al iniciar nuevamente el programa.
+- Regenerar automáticamente los archivos de datos en caso de que no existan.
+
+El programa puede ejecutarse desde la clase `Main.java` en IntelliJ IDEA o mediante el archivo JAR ejecutable generado a partir del proyecto.
 
 ## Créditos
 
@@ -41,7 +51,10 @@ Proyecto académico desarrollado por Diana Torres Rionda.
 
 ## Licencia
 
-Este proyecto fue desarrollado con fines académicos y educativos.
+Este proyecto fue desarrollado con fines académicos y educativos. Su código se proporciona únicamente para fines de aprendizaje y evaluación académica.
 
 ## Estado del proyecto
-En desarrollo - Avance 1.
+
+Versión estable v1.0.
+
+El sistema cuenta con las funcionalidades de registro de doctores, pacientes y citas, persistencia de información mediante archivos y generación de un JAR ejecutable.
